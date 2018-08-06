@@ -19,9 +19,9 @@ url = "http://localhost:12459/Classes/";
 		return this.http.get(this.url+"Active") as Observable<JsonResponse>;
 	}
 
-	// get(id: number) : Observable<JsonResponse> {
-	// 	return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
-	// }
+ 	Get(id: number) : Observable<JsonResponse> {
+	 	return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
+	 }
 
 	// create(class: Class): Observable<JsonResponse> {
 	// 	return this.http.post(this.url+"Create",class) as Observable<JsonResponse>;

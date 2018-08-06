@@ -1,3 +1,6 @@
-<p>
-  class-detail works!
-</p>
+
+<div class="shadow p-3 m-1 rounded" *ngFor="let student of class.Students" style="text-align:center;" [style.background]="student.CheckedIn?'green':'red'">
+	<button class="btn btn-primary">
+	<h5>{{student.Lastname}}, {{student.Firstname}}</h5>
+	</button>
+</div>

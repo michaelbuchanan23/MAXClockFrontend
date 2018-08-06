@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassService } from '../class.service';
+import { Class } from '../class';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Timestamp } from '../../timestamp/timestamp';
+import { TimestampService } from '../../timestamp/timestamp.service';
 
 @Component({
   selector: 'app-class-detail',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassDetailComponent implements OnInit {
 
-  constructor() { }
+	class: Class;
+
+	
+
+  constructor(private classsvc: ClassService,private route: ActivatedRoute, private router: Router, private timestampsvc: TimestampService) { }
 
   ngOnInit() {
-  }
 
+  	let id = this.route.snapshot.params.id;
+  	console.log("id: ", id);
+  	 this.classsvc.Get(id)
+    .subscribe(resp => {
+      this.class = resp.Data;
+      console.log(resp);
+    });
+  }
 }

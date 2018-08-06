@@ -6,8 +6,8 @@ export class Timestamp {
 	Id: number;
 	StudentId: number;
 	ClassId: number;
-	TimeIn: number;
-	TimeOut: number;
+	TimeIn: string;
+	TimeOut: string;
 
 //making sure all the non-nullable fields are initialized to something
 	constructor() {

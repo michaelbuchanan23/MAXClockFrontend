@@ -8,7 +8,7 @@ import { ClassDetailComponent } from './class/class-detail/class-detail.componen
 const routes: Routes = [
 { path: '', redirectTo: '/classes/list', pathMatch:'full' },
 { path: 'classes/list', component: ClassListComponent },
-{ path: 'classes/detail', component: ClassDetailComponent },
+{ path: 'classes/detail/:id', component: ClassDetailComponent },
 
 { path: '**', component: ClassListComponent }
 ];

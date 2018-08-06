@@ -1,3 +1,6 @@
-<p>
-  class-list works!
-</p>
+<div class="shadow p-3 m-1 rounded" *ngFor="let class of activeClasses" style="text-align:center;">
+	<a routerLink='/classes/detail/{{ class.Id }}'>
+	<h3>{{class.Title}}</h3>
+	<h5>{{class.Description}} | {{class.Instructor.Lastname}}, {{class.Instructor.Firstname}}</h5>
+	</a>
+</div>
