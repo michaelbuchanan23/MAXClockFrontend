@@ -13,17 +13,21 @@ export class ClassService {
 	
 	private localClass: BehaviorSubject<Class> = new BehaviorSubject<Class>(new Class());
 	public Class = this.localClass.asObservable();
+	private localActive: BehaviorSubject<any> = new BehaviorSubject<any>('');
+	public ActiveClasses = this.localActive.asObservable();
+	private localClasses: BehaviorSubject<any> = new BehaviorSubject<any>('');
+	public Classes = this.localClasses.asObservable();
 
-	List(): Observable<JsonResponse> {
-		return this.http.get(this.url+"List") as Observable<JsonResponse>;
+	List() {
+		this.http.get<JsonResponse>(this.url+"list").subscribe(data => this.localClasses.next(data.Data));
 	}
-
-	Active(): Observable<JsonResponse> {
-		return this.http.get(this.url+"Active") as Observable<JsonResponse>;
+	
+	Active() {
+		this.http.get<JsonResponse>(this.url+"Active").subscribe(data => this.localActive.next(data.Data));
 	}
 
  	Get(id: number) {
-	 	this.http.get<JsonResponse>(this.url+"Get/"+id).subscribe(data => this.localClass.next(data.Data));
+			this.http.get<JsonResponse>(this.url + "Get/" + id).subscribe(data => this.localClass.next(data.Data));
 	 }
 
 	// create(class: Class): Observable<JsonResponse> {

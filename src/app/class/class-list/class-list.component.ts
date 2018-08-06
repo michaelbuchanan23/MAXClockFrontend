@@ -11,7 +11,7 @@ import { Class } from '../class';
 })
 export class ClassListComponent implements OnInit {
 
-activeClasses: Class[];
+activeClasses;
 
 
   constructor(private classsvc: ClassService) { }
@@ -19,10 +19,7 @@ activeClasses: Class[];
   ngOnInit() {
 
     this.classsvc.Active()
-    .subscribe(resp => {
-      this.activeClasses = resp.Data;
-      console.log(resp);
-    });
+    this.classsvc.ActiveClasses.subscribe(data => this.activeClasses = data);
   }
 
 }

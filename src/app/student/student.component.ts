@@ -24,7 +24,5 @@ export class StudentComponent implements OnInit {
     this.timestamp.StudentId = this.student.Id;
     this.timestamp.ClassId = this.classId;
     this.timestampsvc.Toggle(this.timestamp);
-    this.classsvc.Get(this.classId);
-
   }
 }
