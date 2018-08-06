@@ -14,8 +14,6 @@ export class Student {
 
 //making sure all the non-nullable fields are initialized to something
 	constructor() {
-		this.Id = 0;
-		this.CheckedIn=false;
-		
+		this.Id = 0;		
 	}
 }

@@ -10,6 +10,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ClassListComponent } from './class/class-list/class-list.component';
 import { ClassDetailComponent } from './class/class-detail/class-detail.component';
+import { StudentComponent } from './student/student.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ClassDetailComponent } from './class/class-detail/class-detail.componen
     MenuComponent,
     MenuItemComponent,
     ClassListComponent,
-    ClassDetailComponent
+    ClassDetailComponent,
+    StudentComponent
   ],
   imports: [
     BrowserModule,

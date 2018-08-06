@@ -12,9 +12,9 @@ import { TimestampService } from '../../timestamp/timestamp.service';
 })
 export class ClassDetailComponent implements OnInit {
 
-	class: Class;
+	class: Class = new Class();
 
-	
+  timestamp: Timestamp;
 
   constructor(private classsvc: ClassService,private route: ActivatedRoute, private router: Router, private timestampsvc: TimestampService) { }
 
@@ -22,10 +22,8 @@ export class ClassDetailComponent implements OnInit {
 
   	let id = this.route.snapshot.params.id;
   	console.log("id: ", id);
-  	 this.classsvc.Get(id)
-    .subscribe(resp => {
-      this.class = resp.Data;
-      console.log(resp);
-    });
+    this.classsvc.Get(id);
+    this.classsvc.Class.subscribe(data => this.class = data);
   }
+
 }

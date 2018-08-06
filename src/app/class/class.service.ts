@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Class } from './class';
 import {JsonResponse} from '../utility/json-response';
 
@@ -9,7 +9,10 @@ import {JsonResponse} from '../utility/json-response';
 })
 export class ClassService {
 
-url = "http://localhost:12459/Classes/";
+	url = "http://localhost:12459/Classes/";
+	
+	private localClass: BehaviorSubject<Class> = new BehaviorSubject<Class>(new Class());
+	public Class = this.localClass.asObservable();
 
 	List(): Observable<JsonResponse> {
 		return this.http.get(this.url+"List") as Observable<JsonResponse>;
@@ -19,8 +22,8 @@ url = "http://localhost:12459/Classes/";
 		return this.http.get(this.url+"Active") as Observable<JsonResponse>;
 	}
 
- 	Get(id: number) : Observable<JsonResponse> {
-	 	return this.http.get(this.url+"Get/"+id) as Observable<JsonResponse>;
+ 	Get(id: number) {
+	 	this.http.get<JsonResponse>(this.url+"Get/"+id).subscribe(data => this.localClass.next(data.Data));
 	 }
 
 	// create(class: Class): Observable<JsonResponse> {
